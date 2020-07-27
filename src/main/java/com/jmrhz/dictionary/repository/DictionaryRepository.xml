@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.jmrhz.dictionary.repository.DictionaryRepository">
+
+	<resultMap id="DictionaryDTOResultMap" type="com.jmrhz.dictionary.dto.DictionaryDTO">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="dictionary_id" property="dictionaryId"
+			jdbcType="VARCHAR" />
+		<result column="dictionary_value" property="dictionaryValue"
+			jdbcType="VARCHAR" />
+		<result column="dictionary_type" property="dictionaryType"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="selectSQL">
+		select
+		t.id,t.dictionary_id,t.dictionary_value,t.dictionary_type from
+		jmrhz_dictionary t
+	</sql>
+
+	<select id="load" parameterType="Integer" resultMap="DictionaryDTOResultMap">
+		<include refid="selectSQL"></include>
+		<where>
+			t.id = #{id,jdbcType=BIGINT}
+		</where>
+	</select>
+
+	<select id="queryList" parameterType="java.util.Map" resultMap="DictionaryDTOResultMap">
+		<include refid="selectSQL" />
+		<where>
+			<if test=" id != null and id !=0 ">
+				and t.id = #{id,jdbcType=BIGINT}
+			</if>
+			<if test=" dictionaryId != null and dictionaryId !='' ">
+				and t.dictionary_id = #{dictionaryId,jdbcType=VARCHAR}
+			</if>
+			<if test=" dictionaryValue != null and dictionaryValue != '' ">
+				and t.dictionary_value =
+				#{dictionary_value,jdbcType=VARCHAR}
+			</if>
+			<if test=" dictionaryType != null and dictionaryType !='' ">
+				and t.dictionary_type =
+				#{dictionaryType,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,139 @@
+.rightbtn div {
+    float: left;
+    font-size: 18px;
+    padding-right: 0px;
+}
+
+.bootbox-body{
+    text-align: center;
+    padding: 50px;
+}
+
+.l-icon1:first-child {
+    margin-right: 65px;
+}
+
+.l-icon1 span{
+	width: 90px;
+}
+
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+
+.lh34{
+	line-height: 34px;
+}
+
+.jpgFile{
+	display: flex;
+	padding: 0;
+}
+
+.jpgFile li{
+	list-style: none;
+	flex: 1;
+	min-height: 200px;
+	margin: 0 5px;
+	text-align: center;
+	position: relative;
+}
+
+.jpgFile li span{
+	font-size: 115px;
+	line-height: 145px;
+	display: block;
+	color: #ccc;
+}
+
+.jpgFile li img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+#shanchu{
+	width: 20px;
+	height: 20px;
+	border-radius: 50% !important;
+	text-align: center;
+	background: #2386ca;
+	font-weight: bold;
+	color: #fff;
+	margin-left: 30px;
+	display: inline-block;
+}
+
+.col-xs-10 #file{
+	border: 1px solid #D5D5D5;
+	padding: 5px 10px;
+}
+
+
+
+
+
+
+/* 操作图标 */
+.icon_add {
+	background-size: 20px;
+	background-image: url("../images/u35.png");
+	background-repeat:no-repeat;
+}
+
+.icon_delete {
+	background-size: 20px;
+	background-image: url("../images/u38.png");
+	background-repeat:no-repeat;
+}
+
+.icon_excel {
+	background-size: 20px;
+	background-image: url("../images/u43.png");
+	background-repeat:no-repeat;
+}
+
+.icon_daochu {
+	background-size: 20px;
+	background-image: url("../images/u696.png");
+	background-repeat:no-repeat;
+}
+
+.icon_daoru {
+	background-size: 20px;
+	background-image: url("../images/u217.png");
+	background-repeat:no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

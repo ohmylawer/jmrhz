@@ -1,0 +1,27 @@
+
+{
+	"typecont":[
+			{"value":"0","text":"收文"},
+			{"value":"1","text":"发文"}
+	],
+	"securitytext":[
+			{"value":"0","text":"内部"},
+			{"value":"1","text":"机密"},
+			{"value":"2","text":"秘密"}
+	],
+	"gjxw":[
+			{"value":"0","text":"高危"},
+			{"value":"1","text":"中危"},
+			{"value":"2","text":"低危"}
+	],
+	"gjmb":[
+			{"value":"0","text":"目标1"},
+			{"value":"1","text":"目标2"},
+			{"value":"2","text":"目标3"}
+	],
+	"sbmc":[
+			{"value":"0","text":"终端1"},
+			{"value":"1","text":"终端2"},
+			{"value":"2","text":"终端3"}
+	]
+}

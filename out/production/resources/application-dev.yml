@@ -1,0 +1,37 @@
+ #开发环境配置 dev
+ server: 
+  port: 8090
+ logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){yellow} %clr(%contextName [%thread]){green} %clr(%-5level){red} %clr(%logger{36} - %msg%n){blue}"
+  file: app.log  
+ mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  
+ pagehelper:
+  helper-dialect: sqlite
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+ 
+ spring:
+  http: 
+    multipart: 
+      maxFileSize: 50MB
+      maxRequestSize: 50MB
+      
+  output:
+    ansi:
+      enabled: ALWAYS
+  security:    
+    user: 
+      name: admin
+      password: 123456         
+#  datasource:#     
+#  driver-class-name: org.sqlite.JDBC#
+#  url: jdbc:sqlite::resource:db/mainplance.db#
+
+  maintenanceplan: 
+      encryption: 1
+  profiles:
+    active: dev

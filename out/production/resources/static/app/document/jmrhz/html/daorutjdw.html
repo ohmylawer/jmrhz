@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title>新增</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/uniform/css/uniform.default.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/components.css" id="style_components"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/plugins.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/jstree/dist/themes/default/style.min.css""/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/jquery-minicolors/jquery.minicolors.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../templates/admin/commons/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../common/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/lixian.css"/>
+</head>
+<style type="text/css">
+	.col-xs-3{
+		text-align: right;
+	}
+</style>
+<body>
+	<div style="width:100%;height:100%;position:relative;padding:30px 10px 10px;">
+		<div class="scroller" style="height:100%;">
+			<div style="width:100%;height:100%;padding:0px 10px;">
+				<div style="width: 100%;height: 100%;">
+					<form id="addForm" class="form-horizontal" role="form">
+					    <div class="form-body" style="width: 100%;">
+					        <div class="form-group">
+					        	<label class="col-xs-3 control-label"><span style="color:#f00; padding-right:6px">*</span>推荐单位</label>
+					            <div class="col-xs-9">
+					               <select class="form-control must" id="recommendedUnitName" name="recommendedUnitName">
+							        	<option value="">请选择</option>
+							        </select>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-3 control-label"><span style="color:#f00; padding-right:6px">*</span>联系方式</label>
+					            <div class="col-xs-9">
+					                <input type="text" id="recommendedUnitTel" name="recommendedUnitTel" class="form-control must" data-position="bottom right" value="">
+					            </div>
+				            </div>
+					        <div class="form-group">
+					            <label class="col-xs-3 control-label"><span style="color:#f00; padding-right:6px">*</span>推荐人</label>
+					            <div class="col-xs-9">
+					                <input type="text" id="recommendedUnitContant" name="recommendedUnitContant" class="form-control must" data-position="bottom right" value="">
+					            </div>
+				            </div>
+					    </div>
+					    <div class="form-actions" style="width: 100%;">
+					        <div class="row">
+					            <div class="col-md-12 text-center">
+					                <button type="button" class="btn blue" id="save">导入</button>
+					                <button type="button" class="btn default" id="return" style="width:75px;">取消</button>
+					            </div>
+					        </div>
+					    </div>
+		            </form>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../../common/js/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/vue/vue-resource.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/scripts/metronic.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/layout.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/quick-sidebar.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/demo.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/pages/scripts/tasks.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jstree/dist/jstree.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootbox/bootbox.min.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/jquery.form.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/commons.js"></script>
+	<script type="text/javascript" src="../js/file_add.js"></script>
+	<script type="text/javascript" src="../js/daorutjdw.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			pageModules.initControl();
+		});
+	</script>
+</body>
+</html>

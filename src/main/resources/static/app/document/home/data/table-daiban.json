@@ -1,0 +1,51 @@
+/****************
+response
+	id 数据id
+	total 总条数
+	page 当前页
+	rows 当前页数据
+******************/
+
+	{
+		"total":42,
+		"page":1,
+		"rows":[
+					{
+						"id":"01",
+						"textcont":"你有一条收文信息",
+						"laiyuan":"公文",
+						"status":"0",
+						"gjsj": "2018-05-08"
+					},{
+						"id":"02",
+						"textcont":"你有一条收文信息待发送",
+						"laiyuan":"公文",
+						"status":"1",
+						"gjsj": "2018-05-06"
+					},{
+						"id":"03",
+						"textcont":"你有一条收文信息",
+						"laiyuan":"公文",
+						"status":"0",
+						"gjsj": "2018-05-06"
+					},{
+						"id":"04",
+						"textcont":"你有一条收文信息",
+						"laiyuan":"公文",
+						"status":"1",
+						"gjsj": "2018-05-06"
+					},{
+						"id":"05",
+						"textcont":"你有一条收文信息",
+						"laiyuan":"公文",
+						"status":"1",
+						"gjsj": "2018-05-06"
+					},{
+						"id":"06",
+						"textcont":"你有一条收文信息",
+						"laiyuan":"公文",
+						"status":"0",
+						"gjsj": "2018-05-06"
+					}
+				]
+	}				

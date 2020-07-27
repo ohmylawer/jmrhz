@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jmrhz.company.repository.CompanyRepository">
+
+	<resultMap id="ComapnyDTOResultMap" type="com.jmrhz.company.dto.CompanyDTO">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="business_license" property="businessLicense"
+			jdbcType="VARCHAR" />
+		<result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+		<result column="company_registration_time" property="companyRegistrationTime"
+			jdbcType="VARCHAR" />
+		<result column="joined" property="joined" jdbcType="VARCHAR" />
+		<result column="continue_join" property="continueJoin"
+			jdbcType="BOOLEAN" />
+		<result column="principal" property="principal" jdbcType="VARCHAR" />
+		<result column="telephone" property="telephone" jdbcType="VARCHAR" />
+		<result column="fixedline_telephone" property="fixedlineTelephone"
+			jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="postcode" property="postcode" jdbcType="VARCHAR" />
+		<result column="product_type" property="productType" jdbcType="VARCHAR" />
+		<result column="technology_field" property="technologyField"
+			jdbcType="VARCHAR" />
+		<result column="unit_nature" property="unitNature" jdbcType="VARCHAR" />
+		<result column="sacle" property="sacle" jdbcType="VARCHAR" />
+		<result column="tech_company" property="techCompany" jdbcType="BOOLEAN" />
+		<result column="tech_company_level" property="techCompanyLevel"
+			jdbcType="VARCHAR" />
+		<result column="appear_on_market" property="appearOnMarket"
+			jdbcType="BOOLEAN" />
+		<result column="appear_on_market_time" property="appearOnMarketTime"
+			jdbcType="VARCHAR" />
+		<result column="registered_captital" property="registeredCaptital"
+			jdbcType="NUMERIC" />
+		<result column="total_enterprise_assets" property="totalEnterpriseAssets"
+			jdbcType="NUMERIC" />
+		<result column="military_turnover" property="militaryTurnover"
+			jdbcType="NUMERIC" />
+		<result column="avg_military_turnover" property="avgMilitaryTurnover"
+			jdbcType="NUMERIC" />
+		<result column="merchandise_turnover" property="merchandiseTurnover"
+			jdbcType="NUMERIC" />
+		<result column="avg_merchandise_turnover" property="avgMerchandiseTurnover"
+			jdbcType="NUMERIC" />
+		<result column="enterprise_profile" property="enterpriseProfile"
+			jdbcType="VARCHAR" />
+		<result column="personnel_structure" property="personnelStructure"
+			jdbcType="VARCHAR" />
+		<result column="shares_constitute" property="sharesConstitute"
+			jdbcType="VARCHAR" />
+		<result column="patent_situation" property="patentSituation"
+			jdbcType="VARCHAR" />
+		<result column="prize_situation" property="prizeSituation"
+			jdbcType="VARCHAR" />
+		<result column="paticipation_in_large_project" property="paticipationInLargeProject"
+			jdbcType="VARCHAR" />
+		<result column="technology_financial_services_demand" property="technologyFinancialServicesDemand"
+			jdbcType="BOOLEAN" />
+		<result column="technology_financial_services_demand_type"
+			property="technologyFinancialServicesDemandType" jdbcType="VARCHAR" />
+		<result column="technology_financial_services_demand_description"
+			property="technologyFinancialServicesDemandDescription" jdbcType="VARCHAR" />
+		<result column="enterprise_image" property="enterpriseImage"
+			jdbcType="VARCHAR" />
+		<result column="accessory" property="accessory" jdbcType="VARCHAR" />
+		<result column="save_time" property="saveTime" jdbcType="VARCHAR" />
+		<result column="recommended_unit_name" property="recommendedUnitName"
+			jdbcType="VARCHAR" />
+		<result column="recommended_unit_contant" property="recommendedUnitContant"
+			jdbcType="VARCHAR" />
+		<result column="recommended_unit_tel" property="recommendedUnitTel"
+			jdbcType="VARCHAR" />
+		<result column="join_activity" property="joinActivity"
+			jdbcType="BOOLEAN" />
+	</resultMap>
+
+	<sql id="selectSQL">
+		select
+		t.id,t.company_name,t.business_license,t.legal_person,t.company_registration_time,t.unit_nature,t.joined,t.continue_join,t.principal,t.telephone,
+		t.fixedline_telephone,t.address,t.postcode,t.product_type,t.technology_field,t.sacle,t.tech_company,t.tech_company_level,
+		t.appear_on_market,t.appear_on_market_time,t.registered_captital,t.total_enterprise_assets,t.military_turnover,t.avg_military_turnover,
+		t.merchandise_turnover,t.avg_merchandise_turnover,t.enterprise_profile,t.personnel_structure,t.shares_constitute,t.patent_situation,
+		t.prize_situation,t.paticipation_in_large_project,t.technology_financial_services_demand,t.technology_financial_services_demand_type,t.technology_financial_services_demand_description,
+		t.enterprise_image,t.accessory,t.save_time,t.recommended_unit_name,t.recommended_unit_contant,t.recommended_unit_tel,t.join_activity
+		from jmrhz_company t
+	</sql>
+
+	<select id="load" parameterType="Integer" resultMap="ComapnyDTOResultMap">
+		<include refid="selectSQL"></include>
+		<where>
+			t.id = #{id,jdbcType=BIGINT}
+		</where>
+	</select>
+
+	<select id="listCompanies" parameterType="Integer" resultMap="ComapnyDTOResultMap">
+		<include refid="selectSQL"></include>
+		where id in
+		<foreach collection="array" item="id" index="no" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+	<select id="queryList" parameterType="java.util.Map" resultMap="ComapnyDTOResultMap">
+		<include refid="selectSQL" />
+		<where>
+			1=1
+			<if test=" id != null and id !=0 ">
+				and t.id = #{id,jdbcType=BIGINT}
+			</if>
+			<if test=" companyName != null and companyName !='' ">
+				<bind name="companyName%" value="'%' + companyName + '%'" />
+				and t.company_name like #{companyName%,jdbcType=VARCHAR}
+			</if>
+			<if test=" unitNature != null and unitNature != '' ">
+				<bind name="unitNature%" value="'%' + unitNature + '%'" />
+				and t.unit_nature like #{unitNature%,jdbcType=VARCHAR}
+			</if>
+			<if test=" joined != null and joined !='' ">
+				<bind name="joined%" value="'%' + joined + '%'" />
+				and t.joined like #{joined%,jdbcType=VARCHAR}
+			</if>
+			<if test=" continueJoin != null and continueJoin !='' ">
+				and t.continue_join = #{continueJoin,jdbcType=VARCHAR}
+			</if>
+			<if test=" principal != null and principal !='' ">
+				and t.principal = #{principal,jdbcType=VARCHAR}
+			</if>
+			<if test=" telephone != null and telephone !='' ">
+				and t.telephone = #{telephone,jdbcType=VARCHAR}
+			</if>
+			<if test=" productType != null and productType !=''  ">
+				<bind name="productType%" value="'%' + productType + '%'" />
+				and t.product_type like #{productType%,jdbcType=VARCHAR}
+			</if>
+			<if test=" appearOnMarket != null and appearOnMarket != ''">
+				and t.appear_on_market =
+				#{appearOnMarket,jdbcType=BOOLEAN}
+			</if>
+			<if test=" techCompany != null and techCompany != ''">
+				and t.tech_company = #{techCompany,jdbcType=BOOLEAN}
+			</if>
+			<if
+				test=" technologyFinancialServicesDemand != null and technologyFinancialServicesDemand != ''">
+				and t.technology_financial_services_demand =
+				#{technologyFinancialServicesDemand,jdbcType=BOOLEAN}
+			</if>
+			<if test=" recommendedUnitName != null and recommendedUnitName !=''  ">
+				and t.recommended_unit_name =
+				#{recommendedUnitName,jdbcType=VARCHAR}
+			</if>
+			order by t.save_time desc;
+		</where>
+	</select>
+	<insert id="save" parameterType="com.jmrhz.company.dto.CompanyDTO">
+		insert into jmrhz_company (
+		<if test=" id != null ">
+			id
+		</if>
+
+		<if test=" companyName != null">
+			,company_name
+		</if>
+
+		<if test=" businessLicense != null">
+			,business_license
+		</if>
+
+		<if test=" legalPerson != null">
+			,legal_person
+		</if>
+
+		<if test=" companyRegistrationTime != null">
+			,company_registration_time
+		</if>
+
+		<if test=" joined != null">
+			,joined
+		</if>
+
+		<if test=" continueJoin !=null">
+			,continue_join
+		</if>
+
+		<if test=" principal != null">
+			,principal
+		</if>
+
+		<if test=" telephone != null">
+			,telephone
+		</if>
+
+		<if test=" fixedlineTelephone != null">
+			,fixedline_telephone
+		</if>
+
+		<if test=" address != null">
+			,address
+		</if>
+
+		<if test=" postcode != null">
+			,postcode
+		</if>
+
+		<if test=" productType != null">
+			,product_type
+		</if>
+
+		<if test=" technologyField != null">
+			,technology_field
+		</if>
+
+		<if test=" unitNature != null">
+			,unit_nature
+		</if>
+
+		<if test=" sacle != null">
+			,sacle
+		</if>
+
+		<if test=" techCompany != null">
+			,tech_company
+		</if>
+
+		<if test=" techCompanyLevel != null">
+			,tech_company_level
+		</if>
+
+		<if test=" appearOnMarket != null">
+			,appear_on_market
+		</if>
+
+		<if test=" appearOnMarketTime != null">
+			,appear_on_market_time
+		</if>
+
+		<if test=" registeredCaptital != null and registeredCaptital != 0">
+			,registered_captital
+		</if>
+		<if test=" totalEnterpriseAssets != null and totalEnterpriseAssets != 0">
+			,total_enterprise_assets
+		</if>
+		<if test=" militaryTurnover != null and militaryTurnover != 0">
+			,military_turnover
+		</if>
+
+		<if test=" avgMilitaryTurnover != null and avgMilitaryTurnover != 0">
+			,avg_military_turnover
+		</if>
+
+		<if test=" merchandiseTurnover != null and merchandiseTurnover != 0">
+			,merchandise_turnover
+		</if>
+
+		<if test=" avgMerchandiseTurnover != null and avgMerchandiseTurnover != 0">
+			,avg_merchandise_turnover
+		</if>
+
+		<if test=" enterpriseProfile != null">
+			,enterprise_profile
+		</if>
+
+		<if test=" personnelStructure != null">
+			,personnel_structure
+		</if>
+
+		<if test=" sharesConstitute != null">
+			,shares_constitute
+		</if>
+
+		<if test=" patentSituation != null">
+			,patent_situation
+		</if>
+
+		<if test=" prizeSituation != null">
+			,prize_situation
+		</if>
+
+		<if test=" paticipationInLargeProject != null">
+			,paticipation_in_large_project
+		</if>
+
+		<if test=" technologyFinancialServicesDemand != null">
+			,technology_financial_services_demand
+		</if>
+		<if test=" technologyFinancialServicesDemandType != null">
+			,technology_financial_services_demand_type
+		</if>
+		<if test=" technologyFinancialServicesDemandDescription != null">
+			,technology_financial_services_demand_description
+		</if>
+		<if test=" enterpriseImage != null">
+			,enterprise_image
+		</if>
+		<if test=" accessory != null">
+			,accessory
+		</if>
+		<if test=" saveTime != null">
+			,save_time
+		</if>
+		<if test=" recommendedUnitName != null">
+			,recommended_unit_name
+		</if>
+		<if test=" recommendedUnitContant != null">
+			,recommended_unit_contant
+		</if>
+		<if test=" recommendedUnitTel != null">
+			,recommended_unit_tel
+		</if>
+		<if test=" joinActivity != null">
+			,join_activity
+		</if>
+		)
+		values (
+		<if test=" id != null">
+			#{id,jdbcType=BIGINT}
+		</if>
+
+		<if test=" companyName != null">
+			,#{companyName,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" businessLicense != null">
+			,#{businessLicense,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" legalPerson != null">
+			,#{legalPerson,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" companyRegistrationTime != null">
+			,#{companyRegistrationTime,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" joined != null">
+			,#{joined,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" continueJoin != null">
+			,#{continueJoin,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" principal != null">
+			,#{principal,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" telephone != null">
+			,#{telephone,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" fixedlineTelephone != null">
+			,#{fixedlineTelephone,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" address != null">
+			,#{address,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" postcode != null">
+			,#{postcode,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productType != null">
+			,#{productType,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" technologyField != null">
+			,#{technologyField,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" unitNature != null">
+			,#{unitNature,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" sacle != null">
+			,#{sacle,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" techCompany != null">
+			,#{techCompany,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" techCompanyLevel != null">
+			,#{techCompanyLevel,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" appearOnMarket != null">
+			,#{appearOnMarket,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" appearOnMarketTime != null">
+			,#{appearOnMarketTime,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" registeredCaptital != null and registeredCaptital != 0">
+			,#{registeredCaptital,jdbcType=NUMERIC}
+		</if>
+		<if test=" totalEnterpriseAssets != null and totalEnterpriseAssets != 0">
+			,#{totalEnterpriseAssets,jdbcType=NUMERIC}
+		</if>
+		<if test=" militaryTurnover != null and militaryTurnover != 0">
+			,#{militaryTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" avgMilitaryTurnover != null and avgMilitaryTurnover != 0">
+			,#{avgMilitaryTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" merchandiseTurnover != null and merchandiseTurnover != 0">
+			,#{merchandiseTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" avgMerchandiseTurnover != null and avgMerchandiseTurnover != 0">
+			,#{avgMerchandiseTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" enterpriseProfile != null">
+			,#{enterpriseProfile,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" personnelStructure != null">
+			,#{personnelStructure,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" sharesConstitute != null">
+			,#{sharesConstitute,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" patentSituation != null">
+			,#{patentSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" prizeSituation != null">
+			,#{prizeSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" paticipationInLargeProject != null">
+			,#{paticipationInLargeProject,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" technologyFinancialServicesDemand != null">
+			,#{technologyFinancialServicesDemand,jdbcType=BOOLEAN}
+		</if>
+		<if test=" technologyFinancialServicesDemandType != null">
+			,#{technologyFinancialServicesDemandType,jdbcType=VARCHAR}
+		</if>
+		<if test=" technologyFinancialServicesDemandDescription != null">
+			,#{technologyFinancialServicesDemandDescription,jdbcType=VARCHAR}
+		</if>
+		<if test=" enterpriseImage != null">
+			,#{enterpriseImage,jdbcType=VARCHAR}
+		</if>
+		<if test=" accessory != null">
+			,#{accessory,jdbcType=VARCHAR}
+		</if>
+		<if test=" saveTime != null">
+			,#{saveTime,jdbcType=VARCHAR}
+		</if>
+		<if test=" recommendedUnitName != null">
+			,#{recommendedUnitName,jdbcType=VARCHAR}
+		</if>
+		<if test=" recommendedUnitContant != null">
+			,#{recommendedUnitContant,jdbcType=VARCHAR}
+		</if>
+		<if test=" recommendedUnitTel != null">
+			,#{recommendedUnitTel,jdbcType=VARCHAR}
+		</if>
+		<if test=" joinActivity != null">
+			,#{joinActivity,jdbcType=BOOLEAN}
+		</if>
+		)
+	</insert>
+
+
+	<update id="update" parameterType="com.jmrhz.company.dto.CompanyDTO">
+		update jmrhz_company
+		set id=#{id,jdbcType=BIGINT}
+
+		<if test=" companyName != null">
+			,company_name=#{companyName,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" businessLicense != null">
+			,business_license=#{businessLicense,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" legalPerson != null">
+			,legal_person=#{legalPerson,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" companyRegistrationTime != null">
+			,company_registration_time=#{companyRegistrationTime,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" joined != null">
+			,joined=#{joined,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" continueJoin != null ">
+			,continue_join=#{continueJoin,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" principal != null">
+			,principal=#{principal,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" telephone != null">
+			,telephone=#{telephone,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" fixedlineTelephone != null">
+			,fixedline_telephone=#{fixedlineTelephone,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" address != null">
+			,address=#{address,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" postcode != null">
+			,postcode=#{postcode,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productType != null">
+			,product_type=#{productType,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" technologyField != null">
+			,technology_field=#{technologyField,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" unitNature != null">
+			,unit_nature=#{unitNature,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" sacle != null">
+			,sacle=#{sacle,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" techCompany != null">
+			,tech_company=#{techCompany,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" techCompanyLevel != null">
+			,tech_company_level=#{techCompanyLevel,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" appearOnMarket != null ">
+			,appear_on_market=#{appearOnMarket,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" appearOnMarketTime != null">
+			,appear_on_market_time=#{appearOnMarketTime,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" registeredCaptital != null and registeredCaptital != 0">
+			,registered_captital=#{registeredCaptital,jdbcType=NUMERIC}
+		</if>
+		<if test=" totalEnterpriseAssets != null and totalEnterpriseAssets != 0">
+			,total_enterprise_assets=#{totalEnterpriseAssets,jdbcType=NUMERIC}
+		</if>
+		<if test=" militaryTurnover != null and militaryTurnover != 0">
+			,military_turnover=#{militaryTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" avgMilitaryTurnover != null and avgMilitaryTurnover != 0">
+			,avg_military_turnover=#{avgMilitaryTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" merchandiseTurnover != '' and merchandiseTurnover != 0">
+			,merchandise_turnover=#{merchandiseTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" avgMerchandiseTurnover != '' and avgMerchandiseTurnover != 0">
+			,avg_merchandise_turnover=#{avgMerchandiseTurnover,jdbcType=NUMERIC}
+		</if>
+
+		<if test=" enterpriseProfile != null">
+			,enterprise_profile=#{enterpriseProfile,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" personnelStructure != null">
+			,personnel_structure=#{personnelStructure,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" sharesConstitute != null">
+			,shares_constitute=#{sharesConstitute,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" patentSituation != null">
+			,patent_situation=#{patentSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" prizeSituation != null">
+			,prize_situation=#{prizeSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" paticipationInLargeProject != null">
+			,paticipation_in_large_project=#{paticipationInLargeProject,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" technologyFinancialServicesDemand != null ">
+			,technology_financial_services_demand=#{technologyFinancialServicesDemand,jdbcType=BOOLEAN}
+		</if>
+		<if test=" technologyFinancialServicesDemandType != null">
+			,technology_financial_services_demand_type=#{technologyFinancialServicesDemandType,jdbcType=VARCHAR}
+		</if>
+		<if test=" technologyFinancialServicesDemandDescription != null">
+			,technology_financial_services_demand_description=#{technologyFinancialServicesDemandDescription,jdbcType=VARCHAR}
+		</if>
+		<if test=" enterpriseImage != null">
+			,enterprise_image=#{enterpriseImage,jdbcType=VARCHAR}
+		</if>
+		<if test=" accessory != null">
+			,accessory=#{accessory,jdbcType=VARCHAR}
+		</if>
+		<if test=" saveTime != null">
+			,save_time=#{saveTime,jdbcType=VARCHAR}
+		</if>
+		<if test=" recommendedUnitName != null">
+			,recommended_unit_name=#{recommendedUnitName,jdbcType=VARCHAR}
+		</if>
+		<if test=" recommendedUnitContant != null">
+			,recommended_unit_contant=#{recommendedUnitContant,jdbcType=VARCHAR}
+		</if>
+		<if test=" recommendedUnitTel != null">
+			,recommended_unit_tel=#{recommendedUnitTel,jdbcType=VARCHAR}
+		</if>
+		<if test=" joinActivity != null">
+			,join_activity=#{joinActivity,jdbcType=BOOLEAN}
+		</if>
+		where id= #{id,jdbcType=BIGINT}
+	</update>
+
+
+
+	<delete id="delete" parameterType="long">
+		delete from jmrhz_company
+		where id =#{id,jdbcType=BIGINT}
+	</delete>
+
+
+	<delete id="deleteBatch" parameterType="long">
+		delete from jmrhz_company where id in
+		<foreach collection="array" item="id" index="no" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="getIdList" resultType="long">
+		select
+		t.id
+		from jmrhz_company t
+	</select>
+
+	<select id="loadByLicese" parameterType="java.lang.String"
+		resultMap="ComapnyDTOResultMap">
+		<include refid="selectSQL"></include>
+		<where>
+			t.business_license = #{businessLicense,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	
+	<select id="loadByCompanyName" parameterType="java.lang.String"
+		resultMap="ComapnyDTOResultMap">
+		<include refid="selectSQL"></include>
+		<where>
+			t.company_name = #{companyName,jdbcType=VARCHAR}
+		</where>
+	</select>
+
+	<insert id="saveBatch" parameterType="com.jmrhz.company.dto.CompanyDTO">
+		insert into
+		jmrhz_company(id,company_name,business_license,legal_person,company_registration_time,joined,continue_join,principal,telephone,
+		fixedline_telephone,address,postcode,product_type,technology_field,unit_nature,sacle,tech_company,tech_company_level,
+		appear_on_market,appear_on_market_time,registered_captital,total_enterprise_assets,military_turnover,avg_military_turnover,
+		merchandise_turnover,avg_merchandise_turnover,enterprise_profile,personnel_structure,shares_constitute,patent_situation,
+		prize_situation,paticipation_in_large_project,technology_financial_services_demand,technology_financial_services_demand_type,technology_financial_services_demand_description,
+		enterprise_image,accessory,save_time,recommended_unit_name,recommended_unit_contant,recommended_unit_tel,join_activity)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">(
+			#{item.id,jdbcType=BIGINT},#{item.companyName,jdbcType=VARCHAR},#{item.businessLicense,jdbcType=VARCHAR},#{item.legalPerson,jdbcType=VARCHAR},#{item.companyRegistrationTime,jdbcType=VARCHAR},#{item.joined,jdbcType=VARCHAR},#{item.continueJoin,jdbcType=BOOLEAN}
+			,#{item.principal,jdbcType=VARCHAR},#{item.telephone,jdbcType=VARCHAR},#{item.fixedlineTelephone,jdbcType=VARCHAR},#{item.address,jdbcType=VARCHAR},#{item.postcode,jdbcType=VARCHAR},#{item.productType,jdbcType=VARCHAR},#{item.technologyField,jdbcType=VARCHAR},#{item.unitNature,jdbcType=VARCHAR}
+			,#{item.sacle,jdbcType=VARCHAR},#{item.techCompany,jdbcType=BOOLEAN},#{item.techCompanyLevel,jdbcType=VARCHAR},#{item.appearOnMarket,jdbcType=BOOLEAN},#{item.appearOnMarketTime,jdbcType=VARCHAR},#{item.registeredCaptital,jdbcType=NUMERIC},#{item.totalEnterpriseAssets,jdbcType=NUMERIC},#{item.militaryTurnover,jdbcType=NUMERIC},#{item.avgMilitaryTurnover,jdbcType=NUMERIC}
+			,#{item.merchandiseTurnover,jdbcType=NUMERIC},#{item.avgMerchandiseTurnover,jdbcType=NUMERIC},#{item.enterpriseProfile,jdbcType=VARCHAR},#{item.personnelStructure,jdbcType=VARCHAR},#{item.sharesConstitute,jdbcType=VARCHAR},#{item.patentSituation,jdbcType=VARCHAR},#{item.prizeSituation,jdbcType=VARCHAR},#{item.paticipationInLargeProject,jdbcType=VARCHAR}
+			,#{item.technologyFinancialServicesDemand,jdbcType=BOOLEAN},#{item.technologyFinancialServicesDemandType,jdbcType=VARCHAR},#{item.technologyFinancialServicesDemandDescription,jdbcType=VARCHAR},#{item.enterpriseImage,jdbcType=VARCHAR},#{item.accessory,jdbcType=VARCHAR},#{item.saveTime,jdbcType=VARCHAR}
+			,#{item.recommendedUnitName,jdbcType=VARCHAR},#{item.recommendedUnitContant,jdbcType=VARCHAR},#{item.recommendedUnitTel,jdbcType=VARCHAR},#{item.joinActivity,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+	<select id="getRecommendInfo" resultType="com.jmrhz.company.dto.RecommendDTO">
+		select
+		c.company_name as
+		companyName,c.recommended_unit_name as recommendedUnitName,
+		c.legal_person as relationPerson, c.telephone as phone,
+		c.recommended_unit_contant as recommendContant, c.recommended_unit_tel
+		as recommendTel,
+		p.product_name as productName from jmrhz_company c,
+		jmrhz_product p
+		where p.business_license = c.business_license
+		and c.recommended_unit_name=#{recommendedName,jdbcType=VARCHAR}
+		order by
+		c.id
+	</select>
+</mapper>

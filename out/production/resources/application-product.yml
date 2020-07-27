@@ -1,0 +1,22 @@
+ #生产环境配置
+ server: 
+  port: 8085
+ logging:
+   file:
+     name: app.log
+ pagehelper:
+  helper-dialect: sqlite
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  
+ spring:
+  http: 
+    multipart:
+      maxFileSize: -1MB
+      maxRequestSize: -1MB
+ datasource:
+  driver-class-name: org.sqlite.JDBC
+  url: jdbc:sqlite::resource:db/mainplance.db
+  maintenanceplan: 
+      encryption: 1

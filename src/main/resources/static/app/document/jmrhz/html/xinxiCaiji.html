@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/components.css" id="style_components"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/plugins.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/uniform/css/uniform.default.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../common/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/printPage.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/lixian.css"/>
+</head>
+
+<style>
+	#gridcont #gridcont_content{
+		overflow-x: scroll !important;
+	}
+	#gridcont #gridcont_hdtablediv{
+		height: 55px !important;
+	}
+	
+	#gridcont #gridcont_hdtablediv th{
+	    vertical-align: middle;
+	}
+
+	#gridcont_tablepage,
+	#gridcont2_tablepage{
+	    height: 38px;
+	    overflow: hidden;
+	    width: 40%;
+	    background-color: transparent;
+	    position: absolute;
+	    right: 0;
+	    top: -50px;
+	}
+
+
+</style>
+<body>
+	<div style="width:100%;height:100%;position:relative;padding:0 18px;overflow: auto;">
+		<div class="boxContent" style="width:100%;height: 100%;position:relative;padding-top:20px;">
+		     <div class="leftbox" style="width:100%;height:100%;">
+		     	<div class="l_cont">
+		     		<div style="height:100%;width:100%;position: relative;">
+		     			<div class="tab-content" style="width:100%;height:100%;clear: both;">
+				     		<div class="contentBox btm_cont1" style="height:70%;text-align:center;overflow:hidden;">
+				     			<div style="width:100%;height:100%">
+									<div class="filter">
+										<form id="addForm" class="form-horizontal" role="form" enctype="multipart/form-data">
+										    <div class="form-body" style="width:100%;">
+										        <div class="form-group">
+										        	<label class="col-xs-1 control-label" style="text-align: left;font-weight: bold;padding:0px 0 0 15px;width: 95px;">企业信息</label>
+										        	<label class="col-xs-1 control-label" style="padding:0px 0 0 15px;width: 95px;">单位名称</label>
+										            <div class="col-xs-2">
+										                <div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+													        <input type="text" placeholder="请输入" class="form-control" id="companyName" name="companyName" />
+														</div>
+										            </div>
+										        	<label class="col-xs-2 control-label" style="padding:0px 0 0 15px;width: 140px;">企业（单位）性质</label>
+										            <div class="col-xs-2">
+										                <select class="form-control" id="unitNature" name="unitNature">
+												        </select>
+										            </div>
+										            <label class="col-xs-2 control-label" style="padding:0px 0 0 15px;text-align: left;width:140px;">是否参见往届展览</label>
+										            <div class="col-xs-1" style="padding-left:0">
+										                <select class="form-control" id="joined" name="joined">
+												        </select>
+										            </div>
+										             <label class="col-xs-1 control-label" style="padding:0px 0 0 15px;text-align: left;width:90px;">推荐单位</label>
+										            <div class="col-xs-1" style="padding-left:0">
+										                <select class="form-control" id="recommendedUnit" name="recommendedUnit">
+												        </select>
+										            </div>
+											        <input type="hidden" placeholder="请输入" class="form-control" id="recommendedUnitNames" name="recommendedUnitNames" />
+											        <input type="hidden" placeholder="请输入" class="form-control" id="recommendedUnitTels" name="recommendedUnitTels" />
+											        <input type="hidden" placeholder="请输入" class="form-control" id="recommendedUnitContants" name="recommendedUnitContants" />
+										            
+										        	<div id="reset">重置</div>
+										        	<div id="search">查询</div>
+										        </div>
+										    </div>
+							            </form>
+									</div>
+									<div style="overflow: hidden;padding-bottom: 20px; background: #fff;" id="con">
+						     			<div class="col-sm-5 p40 rightbtn" style="width: 100%;height:40px;margin-top: 15px;clear: both;">
+						     				<div class="l-icon1" id="add"><div class="icon_add" title="新增"></div><span>新增</span></div>
+											<div class="l-icon1" id="delete"><div class="icon_delete" title="删除"></div><span>删除</span></div>
+											<div class="l-icon1" id="excel"><div class="icon_excel" style="padding-right: 70px;" title="导出企业名单"></div><span>导出企业名单</span></div>
+											<div class="l-icon1" id="excelAll"><div class="icon_daochu" style="padding-right: 105px;" title="导出企业与产品信息"></div><span style="width: 130px;">导出企业与产品信息</span></div>
+											<div class="l-icon1" id="daochu"><div class="icon_daochu" style="padding-right: 85px;" title="导出报名信息表"></div><span style="width: 105px;">导出报名信息表</span></div>
+											<div class="l-icon1" id="daoru">
+												<div class="icon_daoru" title="导入"><span id="file" style="text-align: right;width: 60px;margin-left: -30px;"> 导入</span></div>
+							          			<input type="file" id="file_input" accept="application/zip" style="display:none;"/>
+											</div>
+										</div>
+						     			<div class="p40" style="height: 60%;width:100%;padding-top:0px;">	
+						     				<!--<div class="Texttags" style="overflow: hidden;height:30px;line-height:30px;width:100%">
+						     					<div style="font-size: 14px;font-weight: bold;float:left;color:#FF561E;display: inline-block;">（建议一次性提交打印申请）</div>
+						     					<div style="font-size: 14px;float:right;display: inline-block;"><span style="color:#f00">*</span>已选择文件数：<span style="color:#f00;padding:0 20px 0 0">20</span>当日剩余打印文件数：<span style="color:#f00">60</span></div>
+						     				</div>-->
+						     				<div class="Texttags" style="overflow: hidden;width:100%">
+					     					</div>
+											<div id="tab1" style="height:100%;width:100%;position: relative;">
+								        	</div>
+								        	<div id="gridcont"></div>
+								        </div>	
+							        </div>
+						       </div>
+				     		</div>
+				     		<div class="contentBox btm_cont2" style="height:70%;text-align:center;overflow:hidden;">
+				     			<div style="width:100%;height:100%">
+									<div class="filter">
+										<form id="addForm" class="form-horizontal" role="form" enctype="multipart/form-data">
+										    <div class="form-body" style="width:100%;">
+										        <div class="form-group">
+										        	<label class="col-xs-1 control-label" style="text-align: left;font-weight: bold;padding:0px 0 0 15px;width: 95px;">产品信息</label>
+										        	<label class="col-xs-1 control-label" style="padding:0px 0 0 15px;width: 95px;">产品名称</label>
+										            <div class="col-xs-2">
+										                <div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+													        <input type="text" placeholder="请输入" class="form-control" id="productName" name="productName" />
+														</div>
+										            </div>
+										        	<label class="col-xs-2 control-label" style="padding:0px 0 0 15px;width: 140px;">产品类型</label>
+										            <div class="col-xs-2">
+										                <select class="form-control" id="productType" name="productType">
+												        </select>
+										            </div>
+										            <label class="col-xs-1 control-label" style="padding:0px 0 0 15px;text-align: left;width:90px;">推荐单位</label>
+										            <div class="col-xs-1" style="padding-left:0">
+										                <select class="form-control" id="recommendedUnit1" name="recommendedUnit1">
+												        </select>
+										            </div>
+										        	<div id="reset1">重置</div>
+										        	<div id="search1">查询</div>
+										        </div>
+										    </div>
+							            </form>
+									</div>
+									<div style="overflow: hidden;padding-bottom: 20px; background: #fff;">
+						     			<div class="col-sm-5 p40 rightbtn" style="width: 100%;height:40px;margin-top: 15px;clear: both;">
+											<div class="l-icon1" id="delete2"><div class="icon_delete" title="删除"></div><span>删除</span></div>
+										</div>
+						     			<div class="p40" style="height: 60%;width:100%;padding-top:0px;">	
+						     				<!--<div class="Texttags" style="overflow: hidden;height:30px;line-height:30px;width:100%">
+						     					<div style="font-size: 14px;font-weight: bold;float:left;color:#FF561E;display: inline-block;">（建议一次性提交打印申请）</div>
+						     					<div style="font-size: 14px;float:right;display: inline-block;"><span style="color:#f00">*</span>已选择文件数：<span style="color:#f00;padding:0 20px 0 0">20</span>当日剩余打印文件数：<span style="color:#f00">60</span></div>
+						     				</div>-->
+						     				<div class="Texttags" style="overflow: hidden;width:100%">
+					     					</div>
+											<div id="tab2" style="height:100%;width:100%;position: relative;">
+								        	</div>
+								        	<div id="gridcont2" style="position: relative;"></div>
+								        </div>	
+							        </div>
+						       </div>
+				     		</div>
+			     		</div>
+		           </div>
+		     	</div>
+		     </div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/scripts/metronic.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/layout.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/quick-sidebar.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/demo.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/pages/scripts/tasks.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/uniform/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootbox/bootbox.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/gridtable/gridtable.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../../../common/highcharts/js/highcharts.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/index.js"></script>  
+	<script type="text/javascript" src="../js/xinxiCaiji.js"></script> 
+	<script type="text/javascript" src="../js/daorutjdw.js"></script> 
+	<script>
+		jQuery(document).ready(function() {
+			pageModule.initControl();
+		});
+	</script>
+</body>
+</html>

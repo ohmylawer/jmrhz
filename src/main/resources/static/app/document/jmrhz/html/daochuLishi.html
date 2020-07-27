@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/components.css" id="style_components"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/plugins.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/uniform/css/uniform.default.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../common/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/lixian.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/printPage.css"/>
+</head>
+<body>
+	<div style="width:100%;height:100%;position:relative;padding:0 18px;overflow: auto;">
+		<div class="boxContent" style="width:100%;height: 100%;position:relative;padding-top:20px;overflow: hidden;">
+		     <div class="leftbox" style="width:100%;height:100%;">
+		     	<div class="l_cont">
+		     		<div style="height:100%;width:100%;position: relative;">
+		     			<div class="tab-content" style="width:100%;height:100%;clear: both;">
+				     		<div class="contentBox btm_cont1" style="height:94%;text-align:center;overflow:hidden;">
+				     			<div style="width:100%;height:100%">
+									<div class="filter">
+										<form id="addForm" class="form-horizontal" role="form" enctype="multipart/form-data">
+										    <div class="form-body" style="width:100%;">
+										        <div class="form-group">
+										        	<label class="col-xs-1 control-label" style="text-align: left;font-weight: bold;padding:0px 0 0 15px;width: 95px;">导出历史</label>
+										        	<label class="col-xs-1 control-label" style="padding:0px 0 0 15px;width: 95px;">导出包名</label>
+										            <div class="col-xs-2">
+												        <input type="text" placeholder="请输入" class="form-control" id="printCompany" name="printCompany" />
+										            </div>
+										        	<label class="col-xs-1 control-label" style="padding:0px 0 0 15px;width: 95px;">导出时间</label>
+										            <div class="col-xs-2">
+										                <div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+														    <input type="text" class="form-control" id="beforeTime" name="beforeTime" required="required" readonly="readonly" onfocus="blur()" />
+															<span class="input-group-btn">
+														    	<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+														    </span>
+														</div>
+										            </div>
+										            <label class="col-xs-1 control-label" style="padding:0px 0 0 15px;text-align: left;width:80px;">导出结果</label>
+										            <div class="col-xs-2" style="padding-left:0">
+										                <select class="form-control" id="sqzt" name="sqzt">
+										                	<option value="">请选择</option>
+										                	<option value="1">成功</option>
+										                	<option value="0">失败</option>
+												        </select>
+										            </div>
+										        	<div id="reset">重置</div>
+										        	<div id="search">查询</div>
+										        </div>
+										    </div>
+							            </form>
+									</div>
+									<div style="overflow: hidden;padding-bottom: 20px; background: #fff;">
+						     			<div class="col-sm-5 p40 rightbtn" style="width: 100%;height:40px;margin-top: 15px;clear: both;">
+						     				<div class="l-icon1" id="daochu"><div class="icon_daochu" title="导出"></div><span>导出</span></div>
+										</div>
+						     			<div class="p40" style="height: 60%;width:100%;padding-top:0px;">	
+						     				<div class="Texttags" style="overflow: hidden;width:100%">
+					     					</div>
+											<div id="tab1" style="height:100%;width:100%;">
+								        	</div>
+								        	<div id="gridcont"></div>
+								        </div>	
+							        </div>
+						       </div>
+				     		</div>
+			     		</div>
+		           </div>
+		     	</div>
+		     </div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/scripts/metronic.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/layout.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/quick-sidebar.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/demo.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/pages/scripts/tasks.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/uniform/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/gridtable/gridtable.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../../../common/highcharts/js/highcharts.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/index.js"></script>  
+	<script type="text/javascript" src="../js/daochuLishi.js"></script> 
+	<script>
+		jQuery(document).ready(function() {
+			pageModule.initControl();
+		});
+	</script>
+</body>
+</html>

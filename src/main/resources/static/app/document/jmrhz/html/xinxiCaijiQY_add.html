@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title>新增</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/uniform/css/uniform.default.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/components.css" id="style_components"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/plugins.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/jstree/dist/themes/default/style.min.css""/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/jquery-minicolors/jquery.minicolors.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../templates/admin/commons/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../common/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/lixian.css"/>
+</head>
+<style>
+	.col-xs-10,.col-xs-4,.col-xs-6{
+		padding: 5px 0;
+	}
+	
+	.form-horizontal .control-label {
+	    padding-top: 0 !important;
+	}
+</style>
+
+<body>
+	<div style="width:100%;height:100%;position:relative;padding:30px 10px 10px;">
+		<div class="scroller" style="height:100%;">
+			<div style="width:100%;height:100%;padding:0px 10px;">
+				<div style="width: 100%;height: 100%;">
+					<form id="addForm" class="form-horizontal" role="form">
+					    <div class="form-body" style="width: 100%;">
+					        <div class="form-group">
+					        	<label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>单位名称</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="companyName" name="companyName" class="form-control must" data-position="bottom right" value="">
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>营业执照号/统一社会信用代码</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="businessLicense" name="businessLicense" class="form-control must" data-position="bottom right" value="">
+					            </div>
+				            </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>法人代表</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="legalPerson" name="legalPerson" class="form-control must" data-position="bottom right" value="">
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>企业工商注册时间</label>
+					            <div class="col-xs-4">
+					                <div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+									    <input type="text" class="form-control must" id="companyRegistrationTime" name="companyRegistrationTime" required="required" readonly="readonly" onfocus="blur()" />
+										<span class="input-group-btn">
+									    	<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+									    </span>
+									</div>
+					            </div>
+				           </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>是否参加往届展览</label>
+					            <div class="col-xs-4 joineds">
+					            	<!--<select class="form-control must" id="joined" name="joined">
+							        	<option value="">请选择</option>
+							        </select>-->
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>是否愿意参加第五届展览需求对接活动</label>
+					            <div class="col-xs-4">
+					            	<input type="radio" checked name="continueJoin" id="continueJoin" value='true' /> 是&emsp;
+					            	<input type="radio" name="continueJoin" id="continueJoin1" value='false' /> 否
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>参展负责人</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="principal" name="principal" class="form-control must" data-position="bottom right" value="">
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>手机</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="telephone" name="telephone" class="form-control must" validateType="phone" data-position="bottom right" value="">
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label">固定电话</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="fixedlineTelephone" name="fixedlineTelephone" validateType="fixphone"  class="form-control" data-position="bottom right" value="">
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>邮编</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="postcode" name="postcode" class="form-control must" validateType='positalCode' data-position="bottom right" value="">
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>通信地址</label>
+					            <div class="col-xs-4">
+					                <input type="hidden" id="address" name="address" placeholder="请选择省/市/县" class="form-control" data-position="bottom right" value="">
+					                <input type="text" id="addressdetail" name="addressdetail" placeholder="请输入省市县" class="form-control must" data-position="bottom right" value="">
+		                			<!--<select class="form-control must" id="sacle1" name="sacle1" style="width: 30%;float: left;">
+							        	<option value="">请选择</option>
+							        </select>
+							        <select class="form-control must" id="sacle2" name="sacle2" style="width: 30%;float: left;">
+							        	<option value="">请选择</option>
+							        </select>
+							        <select class="form-control must" id="sacle3" name="sacle3" style="width: 30%;float: left;">
+							        	<option value="">请选择</option>
+							        </select>-->
+					                	
+					            </div>
+					            <div class="col-xs-6">
+					                <input type="text" id="detailAddress" name="detailAddress" style="float: right;width: 95%" class="form-control" placeholder="请输入详细地址" data-position="bottom right" value="">
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>产品技术类型</label>
+					            <div class="col-xs-4 productTypes">
+					            	<!--<select class="form-control must" id="productType" name="productType">
+							        	<option value="">请选择</option>
+							        </select>-->
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>技术领域</label>
+					            <div class="col-xs-4 technologyFields" style="width: 310px;">
+					            	<!--<select class="form-control must" id="technologyField" name="technologyField">
+							        	<option value="">请选择</option>
+							        </select>-->
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>企业(单位)性质</label>
+					            <div class="col-xs-4">
+					            	<select class="form-control must" id="unitNature" name="unitNature">
+							        	<option value="">请选择</option>
+							        </select>
+					                <input type="text" id="qita" name="qita" style="float: right;display: none;" class="form-control" placeholder="请输入详细信息" data-position="bottom right" value="">
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>企业规模</label>
+					            <div class="col-xs-4">
+					            	<select class="form-control must" id="sacle" name="sacle">
+							        	<option value="">请选择</option>
+							        </select>
+					           		<span style="color: #025AB3;font-size: 10px;text-decoration:underline" id="guifan" >参照大中小为企业划分标准（国统字[2011]75号）</span>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>是否高新技术企业</label>
+					            <div class="col-xs-4">
+					            	<input type="radio" checked name="techCompany" id="techCompany" value='true' /> 是&emsp;
+					            	<input type="radio" name="techCompany" id="techCompany1" value='false' /> 否
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px" class="techs">*</span>高新技术企业等级</label>
+					            <div class="col-xs-4">
+					            	<select class="form-control must" id="techCompanyLevel" name="techCompanyLevel">
+							        	<option value="">请选择</option>
+							        </select>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>是否上市</label>
+					            <div class="col-xs-4">
+					            	<input type="radio" checked name="appearOnMarket" id="appearOnMarket" value='true' /> 是&emsp;
+					            	<input type="radio" name="appearOnMarket" id="appearOnMarket1" value='false' /> 否
+					            </div>
+					            <label class="col-xs-2 control-label"><span class="sstime" style="color:#f00; padding-right:6px">*</span>上市时间</label>
+					            <div class="col-xs-4">
+					            	<div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+									    <input type="text" class="form-control must" id="appearOnMarketTime" name="appearOnMarketTime" required="required" readonly="readonly" onfocus="blur()" />
+										<span class="input-group-btn">
+									    	<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+									    </span>
+									</div>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>注册资金</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="registeredCaptital" name="registeredCaptital" class="form-control must fl" validateType="num" placeholder="保留两位小数" style="width: 90%;" data-position="bottom right" value=""><span class="fr lh34" >万元</span>
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>企业总资产</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="totalEnterpriseAssets" name="totalEnterpriseAssets" class="form-control must fl" validateType="num" placeholder="保留两位小数" style="width: 90%;" data-position="bottom right" value=""><span class="fr lh34" >万元</span>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>2018年军品营业额</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="militaryTurnover" name="militaryTurnover" class="form-control must fl"  validateType="num" placeholder="保留两位小数（军工集团无需填写）"  style="width: 90%;" data-position="bottom right" value=""><span class="fr lh34" >万元</span>
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>年均军品营业额</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="avgMilitaryTurnover" name="avgMilitaryTurnover" class="form-control must fl"  validateType="num" placeholder="保留两位小数，“近5年年均，成立不满5年，自成立日期起算”，（军工集团无需填写）" style="width: 90%;" data-position="bottom right" value=""><span class="fr lh34" >万元</span>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>2018年军民营业额</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="merchandiseTurnover" name="merchandiseTurnover" class="form-control must fl"  validateType="num" placeholder="保留两位小数（军工集团无需填写）" style="width: 90%;" data-position="bottom right" value=""><span class="fr lh34" >万元</span>
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>年均民品营业额</label>
+					            <div class="col-xs-4">
+					                <input type="text" id="avgMerchandiseTurnover" name="avgMerchandiseTurnover" class="form-control must fl" validateType="num" placeholder="保留两位小数，“近5年年均，成立不满5年，自成立日期起算”，（军工集团无需填写）" style="width: 90%;" data-position="bottom right" value=""><span class="fr lh34" >万元</span>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-5 control-label"><span style="color:#f00; padding-right:10px">*</span>是否愿意参加主办方组织的项目路演洽谈活动</label>
+					            <div class="col-xs-4">
+					            	<input type="radio" checked name="joinActivity" id="joinActivity" value='true' /> 是&emsp;
+					            	<input type="radio" name="joinActivity" id="joinActivity1" value='false' /> 否
+					            </div>
+				            </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>企业简介</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="enterpriseProfile" name="enterpriseProfile" maxlength="500" placeholder="限500字，主要包括经营范围，主要产品，行业地位、创新实力、特色优势等" class="form-control must" value=""></textarea>
+					            </div>
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>人员结构</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="personnelStructure" name="personnelStructure" maxlength="300" placeholder="限300字，研发人员规模、数量、能力层次等" class="form-control must" value=""></textarea>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>股权构成</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="sharesConstitute" name="sharesConstitute" maxlength="300" placeholder="限300字，明确指名本单位控股股东及其单位性质" class="form-control must" value=""></textarea>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>专利情况</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="patentSituation" name="patentSituation" maxlength="300" placeholder="限300字，“说明专利号、专利名次及类别等，并在附件中提供证书扫描件”" class="form-control must" value=""></textarea>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>获奖情况</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="prizeSituation" name="prizeSituation" maxlength="300" placeholder="限300字，“省部级及以上获奖情况，并在附件中提供证书扫描件”" class="form-control must" value=""></textarea>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>参加大型项目情况</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="paticipationInLargeProject" name="paticipationInLargeProject" maxlength="300" placeholder="限300字" class="form-control must" value=""></textarea>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>科技金融服务需求</label>
+					            <div class="col-xs-2">
+					            	<input type="radio" checked name="technologyFinancialServicesDemand" id="technologyFinancialServicesDemand" value='true'/> 是&emsp;
+					            	<input type="radio" name="technologyFinancialServicesDemand" id="technologyFinancialServicesDemand1" value='false'/> 否
+					            </div>
+					         </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label" style="width: 170px;"><span style="color:#f00; padding-right:6px" class="kjjr">*</span>科技金融服务需求类型</label>
+					            <div class="col-xs-9 technologyFinancialServicesDemandTypes" style="width: 765px;">
+					                <!--<select class="form-control" id="technologyFinancialServicesDemandType" name="technologyFinancialServicesDemandType">
+							        	<option value="">请选择</option>
+							        </select>-->
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px" class="kjjr">*</span>科技金融服务需求说明</label>
+					            <div class="col-xs-10">
+					            	<textarea style="height: 80px;" id="technologyFinancialServicesDemandDescription" name="technologyFinancialServicesDemandDescription" maxlength="300" placeholder="限300字，说明融资方式和金额、资金使用方向、出让比例、融资时间等需求说明" class="form-control must" value=""></textarea>
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <label class="col-xs-2 control-label"><span style="color:#f00; padding-right:6px">*</span>企业图片</label>
+					            <div class="col-xs-10">
+					            	<span style="color: #ccc;"> 图片比例为5.4：3，最多上传3张企业图片，每张最大3M</span>
+					            </div>
+					            <label class="col-xs-2 control-label"></label>
+					            <div class="col-xs-10">
+					                <input type="hidden" id="enterpriseImage" name="enterpriseImage" class="form-control must" value="" >
+					                <input type="hidden" id="src1" name="src1" class="form-control" value="" >
+					                <input type="hidden" id="src2" name="src2" class="form-control" value="" >
+					                <input type="hidden" id="src3" name="src3" class="form-control" value="" >
+					            	<ul class="jpgFile">
+					            		<li><span>+</span><p>jpg,png格式，文件大小不超过3M</p> <img src="" id="img1" alt="" /></li>
+					            		<li><span>+</span><p>jpg,png格式，文件大小不超过3M</p> <img src="" id="img2" alt="" /></li>
+					            		<li><span>+</span><p>jpg,png格式，文件大小不超过3M</p> <img src="" id="img3" alt="" /></li>
+					            	</ul>
+					            </div>
+					            <label class="col-xs-2 control-label">附件</label>
+					            <div class="col-xs-10">
+					          		<span id="file"> 上传附件</span>
+				          			<input type="file" id="file_input" style="display:none;"/>
+				          			<span class="filemessage"></span>
+				          			<div id="shanchu">×</div>
+				          			<span style="color: #ccc; display: block;">可添加文档、图片、视频、压缩包等格式文件，最大10M。除武器装备“四证”以外的其他企业资质证书及信誉证明等。</span>
+					        	</div>
+					        </div>
+					    </div>
+					    <div class="form-actions" style="width: 100%;">
+					        <div class="row">
+					            <div class="col-md-12 text-center">
+					                <button type="button" class="btn blue" id="save">保存</button>
+					                <button type="button" class="btn default" id="return" style="width:75px;">取消</button>
+					            </div>
+					        </div>
+					    </div>
+		            </form>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../../common/js/vue/vue.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/vue/vue-resource.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/scripts/metronic.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/layout.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/quick-sidebar.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/demo.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/pages/scripts/tasks.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jstree/dist/jstree.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootbox/bootbox.min.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/jquery.form.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/commons.js"></script>
+	<script type="text/javascript" src="../js/file_add.js"></script>
+	<script type="text/javascript" src="../js/xinxiCaijiQY_add.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			pageModule.initControl();
+		});
+	</script>
+</body>
+</html>

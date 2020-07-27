@@ -1,0 +1,29 @@
+ #测试环境配置 test
+ server: 
+  #测试端口按单位级别从8010到8050
+  port: 8010
+ logging: 
+  file: test.log  
+  mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl    
+ pagehelper:
+  helper-dialect: sqlite
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  
+ spring:
+  http: 
+    multipart: 
+      maxFileSize: 50MB
+      maxRequestSize: 50MB  
+  security:
+    user:
+      name: test
+      password: password01!      
+#  datasource:#     
+#  driver-class-name: org.sqlite.JDBC#
+#  url: jdbc:sqlite::resource:db/mainplance.db#
+  maintenanceplan: 
+      encryption: 0

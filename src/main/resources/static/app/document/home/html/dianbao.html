@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/components.css" id="style_components"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/css/plugins.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/uniform/css/uniform.default.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/clockface/css/clockface.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../common/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/dianbao.css"/>
+</head>
+<body>
+	<div style="width:100%;height:100%;position:relative;padding:0 18px;overflow: auto;">
+		<div class="boxContent" style="width:100%;position:relative;padding-top:20px;overflow: hidden;">
+		     <div class="leftbox" style="width:100%;height:530px">
+		     	<div class="l_cont" style="right: 0px">
+		     		<div class="top_cont">
+		     			<!--<div class="tc_leftmsg"><b><img src="../../../common/images/small6.jpg"/></b>电报处理统计</div>-->
+		     			<div class="tc_leftmsg"><b><img src="../../../common/images/small2.jpg"/></b>
+		     				 <div class="titleTab1 Tab">
+								<div class="active">
+									<a class="lefttitle" href="#tab1" data-toggle="tab" style="height: 100%;display: inline-block;">电报处理统计</a>
+								</div>
+								<div id="gridtab">
+									<a class="lefttitle" href="#tab2" data-toggle="tab" style="height: 100%;display: inline-block;">电报处理情况</a>
+								</div>
+							</div>
+		     			</div>
+		     			<div class="tc_rightmsg" style="width: 70%;">
+		     				<form id="addForm" class="form-horizontal" role="form" style="padding-top: 15px;display:none">
+							    <div class="form-body" style="width: 100%;">
+							        <div class="form-group" style="margin:0!important;">
+					        				<div class="col-xs-3">
+						                	 <div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+											    <input type="text" class="form-control" id="todate" name="todate" required="required" readonly="readonly" onfocus="blur()" />
+												<span class="input-group-btn">
+											    	<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+											    </span>
+											</div>
+							            </div>
+							            <label class="col-xs-1 control-label" style="text-align:center;padding-left:0px!important;padding-right:0px!important;width: 2%;">至</label>
+							            <div class="col-xs-3">
+						                	 <div class="input-group date-picker input-daterange"  data-date-format="yyyy-mm-dd">
+											    <input type="text" class="form-control" id="fromdate" name="fromdate" required="required" readonly="readonly" onfocus="blur()" />
+												<span class="input-group-btn">
+											    	<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+											    </span>
+											</div>
+							            </div>
+							            <label class="col-xs-1 control-label">时间</label>
+							            <div class="col-xs-3">
+							                <select class="form-control" id="typecont" name="typecont">
+									        	<option value="">请选择</option>
+									        </select>
+							            </div>
+							            <label class="col-xs-1 control-label">类型</label>
+							        </div>
+							    </div>
+				            </form>
+		     			</div>
+		     		</div>
+		     		<div class="btm_cont" style="height:315px;position: relative;overflow:hidden">
+		     			<div class="tabbable-custom" style="height: 100%;">
+		     				<div class="tab-content" style="width:100%;">
+			     				<div class="tab-pane active" id="tab1" style="height: 100%;">
+			     					<div id="linecharts" style="min-width:310px; height:300px;margin: 0 auto"></div>
+			     				</div>
+			     				<div class="tab-pane" id="tab2" style="height: 100%;">
+			     					<div class="gridTabDiv" style="height: 100%;width:100%;padding-top:0px;">	
+										<div style="height:100%;width:100%;">
+							        		<div id="gridcont"></div>
+							        	</div>
+							        </div>
+			     				</div>
+			     			</div>
+						</div>
+		     		</div>
+		     	</div>
+		     </div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/scripts/metronic.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/layout.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/quick-sidebar.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/layout/scripts/demo.js"></script>
+	<script type="text/javascript" src="../../../../assets/admin/pages/scripts/tasks.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/uniform/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/gridtable/gridtable.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/clockface/js/clockface.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../../assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../../../common/highcharts/js/highcharts.js"></script>
+	<script type="text/javascript" src="../../../../templates/admin/commons/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/commons.js"></script>
+	<script type="text/javascript" src="../../../common/js/index.js"></script>  
+	<script type="text/javascript" src="../js/dianbao.js"></script> 
+	<script>
+		jQuery(document).ready(function() {
+			pageModule.initControl();
+		});
+	</script>
+</body>
+</html>

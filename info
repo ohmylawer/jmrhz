@@ -1,0 +1,5 @@
+JAVA=JDK1.8
+SPRING=Spring Boot 2.1.3
+GRADLE=4.9
+DB=SQLite3
+DB URL=resources/db/system.db

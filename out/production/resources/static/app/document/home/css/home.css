@@ -1,0 +1,413 @@
+html,body{
+	width:100%;
+	height:100%;
+	background: #F3F3F3;
+	margin:0;
+	padding:0;
+	font-family:"微软雅黑";
+	font-size:16px;
+}
+*{
+	box-sizing:border-box;
+}
+a{text-decoration: none;}
+a:hover{text-decoration:underline;}
+i,b,span,ul,li,p,img{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+	font-style: normal;
+}
+.leftbox,.rightbox {
+	float: left;
+	width: 634px;
+	height: 400px;
+	position: relative;
+}
+
+.l_cont {
+	padding: 5px 18px 18px 18px;
+	height: 100%;
+	border: 1px solid #E4E4E4;
+	background: #fff;
+	position: absolute;
+	right: 10px;
+	top: 0;
+	left: 0;
+}
+
+.r_cont {
+	padding: 5px 18px 18px 18px;
+	height: 100%;
+	border: 1px solid #E4E4E4;
+	background: #fff;
+	position: absolute;
+	left: 0px;
+	top: 0;
+	right: 0;
+}
+
+.top_cont {
+	height: 58px;
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+}
+
+.tc_leftmsg b{position:absolute;left:0;top: -4px;}
+.tc_leftmsg i.msgtext{
+	color: #fff;
+	background-color: #FF6600;
+	position: absolute;
+	height: 16px;
+	font-size: 12px;
+	line-height: 16px;
+	border-radius: 30px;
+	font-family: Microsoft Yahei;
+	font-style: normal;
+	right: -22px;
+	text-align: center;
+	font-weight: normal;
+	padding: 0 5px;
+	top: 13px;
+}
+.tc_rightmsg{
+	float: right;
+}
+.rightmsg_more {
+	/*border: 1px solid #ccc;
+	border-radius: 50px!important;*/
+	padding: 0 15px;
+	height: 27px;
+	line-height: 27px;
+	font-size: 12px;
+	margin-top: 17px;
+}
+.btm_cont {
+	margin-top: 20px;
+	width: 100%;
+	font-size: 14px;
+	line-height: 30px;
+}
+.btm_cont ul.ultextset li{line-height:32px;}
+.btm_cont ul.ultextset li a {
+    display: inline-block;
+    width: 55%;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color:#333;
+    padding-left:32px;
+}
+a.msg1{background: url("../../../common/images/msg1.jpg") no-repeat left 9px}
+a.msg2{background: url("../../../common/images/msg2.jpg") no-repeat left 9px}
+a.msg3{background: url("../../../common/images/msg3.jpg") no-repeat left 9px}
+a.msg4{background: url("../../../common/images/msg4.jpg") no-repeat left 9px}
+.btm_cont ul.ultextset li i {
+	display: inline-block;
+	width: 20%;
+	float: left;
+	text-align:right;
+	padding-right:10px;
+	color:#9F9F9F;
+}
+.innerbox{
+	float: left;
+	height:100%;
+	margin-right: 20px;
+}
+.innerbox1{width:40%;}
+.innerbox2{width:25%;}
+.innerbox3{width:31%;}
+@media (max-width: 1280px) {
+	.innerbox1{width:45%;}
+	.innerbox2{width:25%;}
+	.innerbox3{width:25%;}
+}
+.top_textcont{
+	height: 58px;
+	line-height: 58px;
+	width: 100%;
+	color:#46B5AF;
+	font-size:16px;
+	padding-left:15px;
+	position:relative;
+}
+.top_textcont b{position:absolute;left:0;top: -1px;}
+.btm_textcont{
+	
+}
+.btm_cont ul.ulcont {
+	width: 32%;
+	position: relative;
+	float: left;
+	padding-top: 10px;
+}
+.btm_cont ul.ulcont li{
+}
+.btm_cont ul.ulListCont {padding:0 16px;}
+.btm_cont ul.ulListCont li{border-bottom: 1px solid #ccc;height: 42px;line-height: 42px;}
+.btm_cont ul.ulListCont li a{display: inline-block;color: #333;padding:0 30px 0 0;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.btm_cont ul li a.status1{background: url("../../../common/images/msg1.jpg") no-repeat right 9px}
+.btm_cont ul li a.status2{background: url("../../../common/images/msg5.jpg") no-repeat right 9px}
+.btm_cont ul.ulpadding{padding-top:20px;}
+
+.easy-pie-chart .number {font-size: 16px;font-weight: 300;width: 130px;margin: 0 auto;height: 130px;}
+
+
+.searchContent{
+	position: absolute;
+	height: 185px;
+	max-height: 300px;
+	width: 35%;
+	background: #fff;
+	padding: 10px;
+	top: 37px;
+	z-index: 999;
+	left: 164px;
+	border: 1px solid #ccc;
+}
+.searchList{
+	width:100%;
+	margin:0px;
+	color: #333;
+	font-size: 16px;
+	font-family: "Microsoft Yahei";
+	line-height: 30px;
+}
+.btnqk{
+	border-width: 0;
+	padding: 2px 14px;
+	font-size: 18px;
+	outline: none !important;
+	background-image: none !important;
+	filter: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	margin-top: -11px;
+}
+.tishiwenzi{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 40px;
+}
+.tishiList{
+	margin-right:10px;
+}
+.titleTab1 {
+    height: 33px;
+    float: left;
+    line-height: 33px;
+    margin-top: 11px;
+}
+/*.Tab > div.active {
+    background: #5498EB;
+    color: #fff;
+}*/
+.Tab > div a{
+	 color:#939393;
+}
+.Tab > div.active a{
+	 color:#46B5AF;
+}
+.Tab > div a:hover,.Tab > div a:active,.Tab > div a:visited,.Tab > div a:focus{
+	 text-decoration: none;
+}
+.Tab > div {
+    float: left;
+    text-align:center;
+    height: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+    padding:0 15px;
+    border-radius: 25px !important;
+}
+.tabbable-custom > .tab-content {
+    background: none;
+    border:none;
+    padding:0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+}
+
+.tabbable .nav-tabs>li.active>a, .tabbable .nav-tabs>li.active>a:focus,.tabbable .nav-tabs>li.active>a:hover{
+    background: #E9E7E7;
+    border-color: transparent;
+    color: #225e22;
+}
+.nav-tabs > li a {
+    color: #333;
+    font-size: 16px !important;
+}
+.tabbable .leftTreeTab .nav-tabs > li{
+	background:#B0383C;
+	padding:5px 15px;
+}
+.tabbable .leftTreeTab .nav-tabs > li.active{
+	background:#CC9933;
+}
+.nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+    width: 50%;
+    text-align: center;
+}
+.arrowPic i{
+	font-size:20px!important;
+	color:#225e22;
+	font-weight: bold;
+}
+.treeTitle {
+    height: 33px;
+    float: left;
+    line-height: 33px;
+    margin-top: 0px;
+}
+.treeTitle > div.active {
+	background: #fff;
+    border-color: transparent;
+    color: #225e22;
+}
+.treeTitle > div {
+	float: left;
+	width: 50%;
+	text-align: center;
+	height: 37px;
+	margin: 0 auto;
+	background:#D8F5D7;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 0 !important;
+	line-height: 37px;
+	color: #787878;
+	font-weight: bold;
+}
+.sign01{
+	display: inline-block;
+	width:12px;
+	height:12px;
+	margin-right:10px;
+	border-radius: 20px!important;
+}
+.yScrollListInList .ScrollList{width:100%;height:420px;position:absolute;left:0px;overflow:hidden;}
+.yScrollListbtn{cursor:pointer;position:absolute;width:13px;height:19px;top:50%;background:url(../images/btnys.png) no-repeat 0 0;}
+.yScrollListbtnr{background-position:-14px 0;right:5px;}
+.yScrollListbtnl{left:0px;}
+#xzfwq_list li{
+	cursor:pointer;
+}
+#xzfwq_list li:hover{
+	background-color: #f3f3f3;
+}
+.leftTreeBtn{
+	position: absolute;
+	top: 80px;
+	left: 0;
+	border-radius: 0 5px 5px 0 !important;
+	height: 80px;
+	width: 24px;
+	z-index: 10;
+	color: #fff;
+	padding: 13px 3px 0 3px;
+	line-height: 18px;
+	cursor:pointer;
+}
+.treeI{
+	font-weight: bold;
+	margin:5px 0 0 4px;
+	font-size: 20px!important;
+}
+.leftTreeSet{
+	border: 1px solid #63B960;
+	width: 490px;
+	height: 97%;
+	position: absolute;
+	top: 22px;
+	left: 0px;
+	bottom:0px;
+	z-index: 999;
+	display: none;
+	box-shadow:1px 2px 3px 2px #9c9c9c;
+}
+/*******单排图片单个走*****/
+.aui-content-box-list ul li {
+    float: left;
+    border-right: 1px solid #eee;
+}
+
+
+.aui-content-box-list {
+    width: 6950px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.prev {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    margin-top: -40px;
+}
+
+.next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -40px;
+}
+
+.prev a {
+    opacity: 0.6;
+    background: #b0b3b1;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    width: 24px;
+    height: 45px;
+}
+
+.next a {
+    background: #b0b3b1;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    width: 24px;
+    height: 45px;
+    opacity: 0.6;
+}
+
+.prev img {
+    width: 80%;
+    display: block;
+    border: none;
+    position: absolute;
+    left: 0;
+    top: 12px;
+}
+
+.next img {
+    width: 80%;
+    display: block;
+    position: absolute;
+    border: none;
+    top: 13px;
+    right: 0;
+}
+
+.prev a:hover {
+    opacity: 1;
+}
+
+.next a:hover {
+    opacity: 1;
+}
+.addtitle{
+	height:18px;line-height:18px;font-size:16px;
+}

@@ -1,0 +1,160 @@
+html,body{
+	min-width:1590px;
+	min-height:768px;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+	margin:0;
+	padding:0;
+	font-family:"微软雅黑";
+}
+*{
+	box-sizing:border-box;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+.count{
+	padding:2px;
+	min-width:20px;
+	min-height:20px;
+	text-align:center;
+	cursor:pointer;
+	border-radius:100%!important;
+	-moz-border-radius:100%!important;
+	background-color:red;
+	display:inline-block;
+	font-size:10px;
+	color:#fff;
+}
+
+/**/
+.leftwrap{
+	width:100% !important;
+	display: block !important;
+	background: #F3F3F3;
+	position: fixed;
+}
+.leftcontent{
+	position: relative;
+	width:100%;
+	border-right:1px solid #ccc;
+	height: 65px;
+}
+.lefthead{
+	padding-top:10px;
+	height:134px;
+	width:100%;
+}
+.lefthead img{
+	display: block;
+	margin: 0 auto;
+	width: 70%;
+}
+.leftmenu{
+	position: absolute;
+	top: 0;
+	width:100%;
+}
+.leftcontent .headerText {
+	height: 65px;
+	width: 100%;
+	background: #202739;
+	position: absolute;
+	color: #fff;
+	line-height: 65px;
+	font-size: 24px;
+	padding-left:20px ;
+}
+.menu-ul-wrap {
+	position: absolute;
+	width:100%;
+	top: 0;
+	text-align: center;
+}
+.menu-wrap {
+	height: 65px;
+	line-height: 45px;
+	background: #202739;
+	display: inline-block;
+	overflow: hidden;
+}
+.page-sidebar .page-sidebar-menu > li {
+	border: 0 !important;
+}
+.page-sidebar .page-sidebar-menu > li a {
+	font-size: 18px;
+	padding: 10px 30px;
+    color: #fff !important;
+}
+.page-sidebar .page-sidebar-menu > li, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+#left li a:hover{
+    background: #31384B;
+    color:#fff;
+}
+#left .active2 {
+    background: #31384B;
+    color: #fff;
+}
+#left li a{
+	color:#333;
+}
+#left .active2 a{
+    color: #fff;
+}
+#left li ul li a:hover{
+    background: #1362B0;
+    color:#fff;
+}
+#left li ul li a.active2 {
+    background: #1362B0;
+    color: #fff;
+}
+.content{
+	width: 100%;
+	height: 100%;
+}
+
+.cjDialog{
+	background-color:#fff;
+	right:inherit;
+	bottom:inherit;
+}
+.cjDialog .modal-dialog{
+	margin:0!important;
+}
+.cjDialog + .modal-backdrop{opacity:0!important}
+.cjDialog .modal-body,.alertInfo .modal-body{
+	min-height:130px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.cjDialog .modal-footer,.alertInfo .modal-footer {
+    border-top:none;
+}
+.bootbox-body{
+	color:#000;
+	line-height:130px;
+	font-size:15px!important;
+	text-align:center;
+}
+.modal-dialog {
+    width: 400px;
+}
+.modal-footer {
+	text-align: center;
+}
+.clearfix::after{
+	content: "";
+	display: block;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	clear: both;
+}

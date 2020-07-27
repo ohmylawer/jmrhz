@@ -1,0 +1,24 @@
+
+{
+	"daiban":[
+	        {"value":"0","text":"全部"},
+			{"value":"1","text":"状态1"},
+			{"value":"2","text":"状态2"},
+			{"value":"3","text":"状态3"}
+	],
+	"dianbao":[
+			{"value":"0","text":"今天"},
+			{"value":"1","text":"明天"},
+			{"value":"2","text":"后天"}
+	],
+	"ruqin":[
+			{"value":"0","text":"今天"},
+			{"value":"1","text":"明天"},
+			{"value":"2","text":"后天"}
+	],
+	"xitong":[
+			{"value":"0","text":"服务器1"},
+			{"value":"1","text":"服务器2"},
+			{"value":"2","text":"服务器3"}
+	]
+}

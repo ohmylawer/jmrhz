@@ -1,0 +1,166 @@
+	{
+		"name": "军委",
+		"symbol": "image://../images/Bigfloor.png",
+		"symbolSize": [30,30],
+		"myLinkStyle":[
+		{
+		  "targetName":"终端1",
+		  "color":"#ccc"
+		}
+		],
+		"children": [
+			{
+				"name": "军委单位",
+				"symbol": "image://../images/danwei.png",
+				"symbolSize": [30,30],
+				"children": [
+					{
+						"name": "大单位1",
+						"symbol": "image://../images/floor.png",
+						"symbolSize": [30,30],
+						"children": [
+							{
+								"name": "服务器1",
+								"symbol": "image://../images/fwqgreen.png",
+								"symbolSize": [30,30],
+								"type":0,
+								"status":0
+							},
+							{
+								"name": "服务器1",
+								"symbol": "image://../images/fwqgreen.png",
+								"symbolSize": [30,30],
+								"type":0,
+								"status":0
+							},
+							{
+								"name": "终端1",
+								"symbol": "image://../images/zdred.png",
+								"symbolSize": [30,30],
+								"type":1,
+								"status":1
+							}
+						]
+					},
+					{
+						"name": "大单位2",
+						"symbol": "image://../images/floor.png",
+						"symbolSize": [30,30],
+						"children": [
+							{
+								"name": "服务器2",
+								"symbol": "image://../images/fwqred.png",
+								"symbolSize": [30,30],
+								"type":0,
+								"status":1
+							},
+							{
+								"name": "终端2",
+								"symbol": "image://../images/zdgreen.png",
+								"symbolSize": [30,30],
+								"type":1,
+								"status":0
+							}
+						]
+					},
+					{
+						"name": "大单位3",
+						"symbol": "image://../images/floor.png",
+						"symbolSize": [30,30],
+						"children": [
+							{
+								"name": "服务器3",
+								"symbol": "image://../images/fwqgreen.png",
+								"symbolSize": [30,30],
+								"type":0,
+								"status":0
+							},
+							{
+								"name": "终端3",
+								"symbol": "image://../images/zdgreen.png",
+								"symbolSize": [30,30],
+								"type":1,
+								"status":0
+							}
+						]
+					},
+					{
+						"name": "大单位4",
+						"symbol": "image://../images/floor.png",
+						"symbolSize": [30,30],
+						"children": [
+							{
+								"name": "服务器4",
+								"symbol": "image://../images/fwqgreen.png",
+								"symbolSize": [30,30],
+								"type":0,
+								"status":0
+							},
+							{
+								"name": "终端4",
+								"symbol": "image://../images/zdred.png",
+								"symbolSize": [30,30],
+								"type":1,
+								"status":1
+							}
+						]
+					}
+				]
+			},{
+				"name": "军委服务器",
+				"symbol": "image://../images/fuwuq.png",
+				"symbolSize": [30,30],
+				"children": [
+					{
+						"name": "服务器5",
+						"symbol": "image://../images/fwqred.png",
+						"symbolSize": [30,30],
+						"type":0,
+						"status":1
+					},
+					{
+						"name": "服务器6",
+						"symbol": "image://../images/fwqgreen.png",
+						"symbolSize": [30,30],
+						"type":0,
+						"status":0
+					},
+					{
+						"name": "服务器7",
+						"symbol": "image://../images/fwqred.png",
+						"symbolSize": [30,30],
+						"type":0,
+						"status":1
+					}
+				]
+			},
+			{
+				"name": "军委终端",
+				"symbol": "image://../images/zhongduan.png",
+				"symbolSize": [30,30],
+				"children": [
+					{
+						"name": "终端1",
+						"symbol": "image://../images/zdred.png",
+						"symbolSize": [30,30],
+						"type":1,
+						"status":1
+					},
+					{
+						"name": "终端2",
+						"symbol": "image://../images/zdgreen.png",
+						"symbolSize": [30,30],
+						"type":1,
+						"status":0
+					},
+					{
+						"name": "终端3",
+						"symbol": "image://../images/zdgreen.png",
+						"symbolSize": [30,30],
+						"type":1,
+						"status":0
+					}
+				]
+			}
+		]
+	}

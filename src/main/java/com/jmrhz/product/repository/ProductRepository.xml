@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jmrhz.product.repository.ProductRepository">
+	<resultMap id="ProductDTOResultMap" type="com.jmrhz.product.dto.ProductDTO">
+		<id column="id" property="id" jdbcType="BIGINT"></id>
+		<result column="product_name" property="productName" jdbcType="VARCHAR"></result>
+		<result column="previous_exhibitions" property="previousExhibitions"
+			jdbcType="VARCHAR"></result>
+		<result column="product_type" property="productType" jdbcType="VARCHAR"></result>
+		<result column="technical_maturity" property="technicalMaturity"
+			jdbcType="VARCHAR"></result>
+		<result column="advanced_degree" property="advancedDegree"
+			jdbcType="VARCHAR"></result>
+		<result column="exhibition_area" property="exhibitionArea"
+			jdbcType="VARCHAR"></result>
+		<result column="self_intellectual" property="selfIntellectual"
+			jdbcType="BOOLEAN"></result>
+		<result column="self_intellectual_explain" property="selfIntellectualExplain"
+			jdbcType="VARCHAR" />
+		<result column="product_instruction" property="productInstruction"
+			jdbcType="VARCHAR" />
+		<result column="main_product_indicators" property="mainProductIndicators"
+			jdbcType="VARCHAR" />
+		<result column="situation_of_application" property="situationOfApplication"
+			jdbcType="VARCHAR" />
+		<result column="inputs_and_returns" property="inputsndReturns"
+			jdbcType="VARCHAR" />
+		<result column="patent_situation" property="patentSituation"
+			jdbcType="VARCHAR" />
+		<result column="prize_situation" property="prizeSituation"
+			jdbcType="VARCHAR" />
+		<result column="display_exhibits" property="displayExhibits"
+			jdbcType="VARCHAR" />
+		<result column="display_effect" property="displayEffect"
+			jdbcType="VARCHAR" />
+		<result column="display_shape" property="displayShape"
+			jdbcType="VARCHAR" />
+		<result column="display_weight" property="displayWeight"
+			jdbcType="DATE" />
+		<result column="bearing_requirements" property="bearingRequirements"
+			jdbcType="NUMERIC" />
+		<result column="site_requirements" property="siteRequirements"
+			jdbcType="NUMERIC" />
+		<result column="product_picture" property="productPicture"
+			jdbcType="VARCHAR" />
+		<result column="accessory" property="accessory" jdbcType="VARCHAR" />
+		<result column="product_technical_number" property="productTechnicalNumber"
+			jdbcType="VARCHAR" />
+		<result column="business_license" property="businessLicense"
+			jdbcType="VARCHAR"></result>
+		<result column="company_name" property="companyName" jdbcType="VARCHAR"></result>
+	</resultMap>
+
+	<sql id="selectSQL">
+		select
+		t.id,t.product_name,t.previous_exhibitions,t.product_type,t.technical_maturity,t.advanced_degree,t.exhibition_area,t.self_intellectual,
+		t.self_intellectual_explain,t.product_instruction,t.main_product_indicators,t.situation_of_application,t.inputs_and_returns,t.patent_situation,
+		t.prize_situation,t.display_exhibits,t.display_effect,t.display_shape,t.display_weight,t.bearing_requirements,t.site_requirements,t.product_picture,
+		t.accessory,t.product_technical_number,t.business_license,t.company_name
+		from jmrhz_product t
+	</sql>
+
+	<select id="loadByBusinessLincese" parameterType="java.lang.String"
+		resultMap="ProductDTOResultMap">
+		<include refid="selectSQL"></include>
+		<where>
+			t.business_license = #{businessLicense,jdbcType=VARCHAR}
+		</where>
+	</select>
+
+	<select id="load" parameterType="Integer" resultMap="ProductDTOResultMap">
+		<include refid="selectSQL"></include>
+		<where>
+			t.id = #{id,jdbcType=BIGINT}
+		</where>
+	</select>
+
+	<select id="queryList" parameterType="java.util.Map" resultMap="ProductDTOResultMap">
+		<include refid="selectSQL" />
+		<where>
+			1=1
+			<if test=" id != null and id !=0 ">
+				and t.id = #{id,jdbcType=BIGINT}
+			</if>
+			<if test=" productName != null and productName !='' ">
+
+				<bind name="productName%" value="'%' + productName + '%'" />
+				and t.product_name like #{productName%,jdbcType=VARCHAR}
+			</if>
+			<if test=" productType != null and productType !='' ">
+				and t.product_type =
+				#{productType,jdbcType=VARCHAR}
+			</if>
+			<if test=" technicalMaturity != null and technicalMaturity !='' ">
+				and t.technical_maturity =
+				#{technicalMaturity,jdbcType=VARCHAR}
+			</if>
+			<if test=" selfIntellectual != null and  selfIntellectual != ''">
+				and t.self_intellectual =
+				#{selfIntellectual,jdbcType=BOOLEAN}
+			</if>
+			<if test=" advancedDegree != null and advancedDegree !='' ">
+				and t.advanced_degree =
+				#{advancedDegree,jdbcType=VARCHAR}
+			</if>
+
+			<if
+				test="recommendedUnitName != null and recommendedUnitName != '' and ids != null and ids.size != 0">
+				and business_license in
+				<foreach collection="ids" item="id" index="index" open="("
+					separator="," close=")"> #{id}
+				</foreach>
+			</if>
+			<if
+				test="recommendedUnitName != null and recommendedUnitName != '' and (ids == null or ids.size == 0)">
+				and business_license = null
+
+			</if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.jmrhz.product.dto.ProductDTO">
+		insert into jmrhz_product (
+		<if test=" id != null ">
+			id
+		</if>
+
+		<if test=" productName != null">
+			,product_name
+		</if>
+
+		<if test=" previousExhibitions != null">
+			,previous_exhibitions
+		</if>
+
+		<if test=" productType != null">
+			,product_type
+		</if>
+
+		<if test=" technicalMaturity != null">
+			,technical_maturity
+		</if>
+
+		<if test=" advancedDegree != null">
+			,advanced_degree
+		</if>
+
+		<if test=" exhibitionArea !=null">
+			,exhibition_area
+		</if>
+
+		<if test=" selfIntellectual != null ">
+			,self_intellectual
+		</if>
+
+		<if test=" selfIntellectualExplain != null">
+			,self_intellectual_explain
+		</if>
+
+		<if test=" productInstruction != null">
+			,product_instruction
+		</if>
+
+		<if test=" mainProductIndicators != null">
+			,main_product_indicators
+		</if>
+
+		<if test=" situationOfApplication != null">
+			,situation_of_application
+		</if>
+
+		<if test=" inputsndReturns != null">
+			,inputs_and_returns
+		</if>
+
+		<if test=" patentSituation != null">
+			,patent_situation
+		</if>
+
+		<if test=" prizeSituation != null">
+			,prize_situation
+		</if>
+
+		<if test=" displayExhibits != null">
+			,display_exhibits
+		</if>
+
+		<if test=" displayEffect != null">
+			,display_effect
+		</if>
+
+		<if test=" displayShape != null">
+			,display_shape
+		</if>
+
+		<if test=" displayWeight != null">
+			,display_weight
+		</if>
+
+		<if test=" bearingRequirements != null">
+			,bearing_requirements
+		</if>
+
+		<if test=" siteRequirements != null">
+			,site_requirements
+		</if>
+
+		<if test=" productPicture != null">
+			,product_picture
+		</if>
+		<if test=" accessory != null">
+			,accessory
+		</if>
+		<if test=" productTechnicalNumber != null">
+			,product_technical_number
+		</if>
+		<if test=" businessLicense != null">
+			,business_license
+		</if>
+
+		<if test=" companyName != null">
+			,company_name
+		</if>
+		)
+		values (
+		<if test=" id != null">
+			#{id,jdbcType=BIGINT}
+		</if>
+
+		<if test=" productName != null">
+			,#{productName,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" previousExhibitions != null">
+			,#{previousExhibitions,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productType != null">
+			,#{productType,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" technicalMaturity != null">
+			,#{technicalMaturity,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" advancedDegree != null">
+			,#{advancedDegree,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" exhibitionArea !=null">
+			,#{exhibitionArea,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" selfIntellectual != null">
+			,#{selfIntellectual,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" selfIntellectualExplain != null">
+			,#{selfIntellectualExplain,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productInstruction != null">
+			,#{productInstruction,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" mainProductIndicators != null">
+			,#{mainProductIndicators,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" situationOfApplication != null">
+			,#{situationOfApplication,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" inputsndReturns != null">
+			,#{inputsndReturns,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" patentSituation != null">
+			,#{patentSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" prizeSituation != null">
+			,#{prizeSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayExhibits != null">
+			,#{displayExhibits,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayEffect != null">
+			,#{displayEffect,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayShape != null">
+			,#{displayShape,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayWeight != null">
+			,#{displayWeight,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" bearingRequirements != null">
+			,#{bearingRequirements,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" siteRequirements != null">
+			,#{siteRequirements,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productPicture != null">
+			,#{productPicture,jdbcType=VARCHAR}
+		</if>
+		<if test=" accessory != null">
+			,#{accessory,jdbcType=VARCHAR}
+		</if>
+		<if test=" productTechnicalNumber != null">
+			,#{productTechnicalNumber,jdbcType=VARCHAR}
+		</if>
+		<if test=" businessLicense != null">
+			,#{businessLicense,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" companyName != null">
+			,#{companyName,jdbcType=VARCHAR}
+		</if>
+		)
+	</insert>
+
+	<update id="update" parameterType="com.jmrhz.product.dto.ProductDTO">
+		update jmrhz_product
+		set id=#{id,jdbcType=BIGINT}
+
+		<if test=" productName != null">
+			,product_name=#{productName,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" previousExhibitions != null">
+			,previous_exhibitions=#{previousExhibitions,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productType != null">
+			,product_type=#{productType,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" technicalMaturity != null">
+			,technical_maturity=#{technicalMaturity,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" advancedDegree != null">
+			,advanced_degree=#{advancedDegree,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" exhibitionArea !=null">
+			,exhibition_area=#{exhibitionArea,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" selfIntellectual != null">
+			,self_intellectual=#{selfIntellectual,jdbcType=BOOLEAN}
+		</if>
+
+		<if test=" selfIntellectualExplain != null">
+			,self_intellectual_explain=#{selfIntellectualExplain,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productInstruction != null">
+			,product_instruction=#{productInstruction,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" mainProductIndicators != null">
+			,main_product_indicators=#{mainProductIndicators,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" situationOfApplication != null">
+			,situation_of_application=#{situationOfApplication,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" inputsndReturns != null">
+			,inputs_and_returns=#{inputsndReturns,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" patentSituation != null">
+			,patent_situation=#{patentSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" prizeSituation != null">
+			,prize_situation=#{prizeSituation,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayExhibits != null">
+			,display_exhibits=#{displayExhibits,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayEffect != null">
+			,display_effect=#{displayEffect,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayShape != null">
+			,display_shape=#{displayShape,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" displayWeight != null">
+			,display_weight=#{displayWeight,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" bearingRequirements != null">
+			,bearing_requirements=#{bearingRequirements,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" siteRequirements != null">
+			,site_requirements=#{siteRequirements,jdbcType=VARCHAR}
+		</if>
+
+		<if test=" productPicture != null">
+			,product_picture=#{productPicture,jdbcType=VARCHAR}
+		</if>
+		<if test=" accessory != null">
+			,accessory=#{accessory,jdbcType=VARCHAR}
+		</if>
+		<if test=" productTechnicalNumber != null">
+			,product_technical_number=#{productTechnicalNumber,jdbcType=VARCHAR}
+		</if>
+		where id= #{id,jdbcType=BIGINT}
+	</update>
+
+
+	<delete id="delete" parameterType="long">
+		delete from jmrhz_product
+		where id =#{id,jdbcType=BIGINT}
+	</delete>
+
+	<delete id="deleteByBusinessLicense" parameterType="java.lang.String">
+		delete from
+		jmrhz_product
+		where business_license =#{id,jdbcType=VARCHAR}
+	</delete>
+
+	<delete id="deleteBatchByBusinessLicense" parameterType="java.lang.String">
+		delete from jmrhz_product where business_license in
+		<foreach collection="array" item="id" index="no" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<delete id="deleteBatch" parameterType="long">
+		delete from jmrhz_product where id in
+		<foreach collection="array" item="id" index="no" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<insert id="saveBatch" parameterType="com.jmrhz.product.dto.ProductDTO">
+		insert into
+		jmrhz_product(id,product_name,previous_exhibitions,product_type,technical_maturity,advanced_degree,exhibition_area,self_intellectual,
+		self_intellectual_explain,product_instruction,main_product_indicators,situation_of_application,inputs_and_returns,patent_situation,
+		prize_situation,display_exhibits,display_effect,display_shape,display_weight,bearing_requirements,site_requirements,product_picture,
+		accessory,product_technical_number,business_license,company_name)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.id,jdbcType=BIGINT},#{item.productName,jdbcType=VARCHAR},#{item.previousExhibitions,jdbcType=VARCHAR},#{item.productType,jdbcType=VARCHAR},#{item.technicalMaturity,jdbcType=VARCHAR}
+			,#{item.advancedDegree,jdbcType=VARCHAR},#{item.exhibitionArea,jdbcType=VARCHAR},#{item.selfIntellectual,jdbcType=BOOLEAN},#{item.selfIntellectualExplain,jdbcType=VARCHAR},#{item.productInstruction,jdbcType=VARCHAR}
+			,#{item.mainProductIndicators,jdbcType=VARCHAR},#{item.situationOfApplication,jdbcType=VARCHAR},#{item.inputsndReturns,jdbcType=VARCHAR},#{item.patentSituation,jdbcType=VARCHAR},#{item.prizeSituation,jdbcType=VARCHAR}
+			,#{item.displayExhibits,jdbcType=VARCHAR},#{item.displayEffect,jdbcType=VARCHAR},#{item.displayShape,jdbcType=VARCHAR},#{item.displayWeight,jdbcType=VARCHAR},#{item.bearingRequirements,jdbcType=VARCHAR}
+			,#{item.siteRequirements,jdbcType=VARCHAR},#{item.productPicture,jdbcType=VARCHAR},#{item.accessory,jdbcType=VARCHAR},#{item.productTechnicalNumber,jdbcType=VARCHAR}
+			,#{item.businessLicense,jdbcType=VARCHAR},#{item.companyName,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+
+</mapper>

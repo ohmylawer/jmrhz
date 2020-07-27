@@ -1,0 +1,23 @@
+[
+	{
+		"type":"cpu",
+		"name":"cpu使用率",
+		"value1":"60",
+		"value2":"27.6GHz",
+		"value3":"153.6GHz"
+	},{
+		"type":"neicun",
+		"name":"内存使用率",
+		"value1":"75",
+		"value2":"27.6GHz",
+		"value3":"153.6GHz"
+	},
+	{
+		"type":"cunchu",
+		"name":"存储使用率",
+		"value1":"90",
+		"value2":"27.6GHz",
+		"value3":"153.6GHz"
+	}
+
+]

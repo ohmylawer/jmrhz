@@ -1,0 +1,132 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	/*min-width: 1200px;*/
+	min-height: 768px;
+	background-color: #FAFAFA;
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	overflow: auto;
+}
+@media (max-width: 1280px) {
+	body {
+		height: 120%;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.wrap {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    position: absolute;
+    margin-top: 4px\9;
+    margin-left: -9px;
+    cursor: pointer;
+}
+
+/*头部*/
+.wrap_top {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100px;
+	z-index: 99;
+	background:#225e22 url(../images/bg.jpg) repeat-x left top;
+}
+.wrap_top_content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background:url(../images/r_bg.png) no-repeat right top;
+}
+.head_logo{float:left;width:425px;height:100px;}
+.head_menu{height: 100px;position: absolute;left: 425px;top: 0;right: 250px;}
+.head_msg{position:absolute;height:80px;right:97px;top:0;width:120px;color:#fff;padding:4px 0 0 0px;}
+.adminName,.dateTime{font-size: 14px;width:100%;height:30px;overflow: hidden;}
+.personName{float:left;height:30px;line-height:30px;background:url("../images/person.png") no-repeat left center;padding-left:32px;color:#ffec47;}
+.exitdiv{
+	position:absolute;right:0;width:65px;height:100px;background:rgba(0,0,0,0.4);filter:alpha(opacity=20)
+}
+a.exitbtn{
+	float: left;
+	margin-left: 10px;
+	width: 100%;
+	height: 100%;
+	background: url(../images/exit.png) no-repeat 15px center;
+	padding-left: 23px;
+	line-height: 32px;
+	color: #fff;
+}
+
+/*内容区*/
+.wrap_content {
+	position:absolute;
+	top:100px;
+	left:0;
+	bottom:0;
+	width: 100%;
+	padding-bottom:20px;
+}
+
+.main_content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: #FAFAFA;
+	
+}
+.error{color:#ff0000;}
+/********弹出框样式*******/
+.bootbox-body{
+	color:#000;
+	line-height:130px;
+	font-size:15px!important;
+	text-align:center;
+}
+.modal-dialog {
+    width: 400px;
+}
+.modal-footer {
+	text-align: center;
+}
+/********插件--弹出框样式*******/
+.cjDialog{
+	background-color:#fff;
+	right:inherit;
+	bottom:inherit;
+}
+.cjDialog .modal-dialog{
+	margin:0!important;
+}
+.cjDialog + .modal-backdrop{opacity:0!important}
+
+.cjDialog .modal-body,.alertInfo .modal-body{
+	min-height:130px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.cjDialog .modal-footer,.alertInfo .modal-footer {
+    border-top:none;
+}
+.button5{
+	width: 65px;
+    height: 29px;
+    margin-top:2px;
+	border:0;
+	background: url(../images/on_03.png) no-repeat;
+	vertical-align: top;
+}
